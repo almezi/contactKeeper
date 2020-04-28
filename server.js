@@ -1,5 +1,11 @@
 const express = require('express');
+const connectDB = require('./config/db');
 const app = express();
+
+//init body parser middleware
+app.use(express.json({ extended: false }));
+//connect db
+connectDB();
 app.get('/', (req, res) => res.json({ msg: 'welcome to our API' }));
 //Define Routes
 app.use('/api/users', require('./routes/users'));
