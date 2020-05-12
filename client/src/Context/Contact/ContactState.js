@@ -27,12 +27,13 @@ const ContactState = (props) => {
 				name: 'Bon',
 				email: 'Bon@gmail.com',
 				phone: '111-222',
-				type: 'Profesional',
+				type: 'professional',
 			},
 		],
 		//current is for collect data for edit
 		current: null,
 	};
+
 	const [state, dispatch] = useReducer(ContactReducer, initialState);
 	//add contact
 	const addContact = (contact) => {
@@ -52,6 +53,9 @@ const ContactState = (props) => {
 		dispatch({ type: CLEAR_CURRENT });
 	};
 	//update contact
+	const updateContact = (contact) => {
+		dispatch({ type: UPDATE_CONTACT, payload: contact });
+	};
 	//filter contacts
 	//clear filters
 	return (
@@ -63,6 +67,7 @@ const ContactState = (props) => {
 				current: state.current,
 				setCurrent,
 				clearCurrent,
+				updateContact,
 			}}
 		>
 			{props.children}
